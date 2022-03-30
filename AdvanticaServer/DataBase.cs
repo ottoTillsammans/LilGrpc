@@ -15,6 +15,7 @@ namespace AdvanticaServer
         public Context(string path)
         {
             this.Path = path;
+            Database.EnsureCreated();
         }
     }
 }
