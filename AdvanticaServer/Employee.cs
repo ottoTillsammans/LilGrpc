@@ -17,16 +17,23 @@ namespace AdvanticaServer
         public GenderType Gender { get; set; }
         public bool HasChildren { get; set; }
 
-        public Employee(
-            int id, string name, string surname, string patronym,
-            DateTime date, GenderType gender, bool hasChildren)
+        public Employee(string name, string surname, string patronym, GenderType gender)
         {
-            this.Id = id;
             this.Name = name;
             this.Surname = surname;
             this.Patronym = patronym;
-            this.Birthdate = date;
             this.Gender = gender;
+        }
+
+        public Employee(
+            string name, string surname, string patronym, 
+            GenderType gender, DateTime date, bool hasChildren)
+        {
+            this.Name = name;
+            this.Surname = surname;
+            this.Patronym = patronym;
+            this.Gender = gender;
+            this.Birthdate = date;
             this.HasChildren = hasChildren;
         }
     }
