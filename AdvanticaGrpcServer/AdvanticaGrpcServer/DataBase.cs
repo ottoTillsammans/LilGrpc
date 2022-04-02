@@ -1,7 +1,6 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
-namespace AdvanticaServer
+namespace AdvanticaGrpcServer
 {
     public class Context : DbContext
     {

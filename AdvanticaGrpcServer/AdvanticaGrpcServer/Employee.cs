@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AdvanticaServer
+namespace AdvanticaGrpcServer
 {
     public enum GenderType
     {

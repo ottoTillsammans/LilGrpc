@@ -1,0 +1,30 @@
+syntax = "proto3";
+
+option csharp_namespace = "AdvanticaGrpcServer";
+
+package greet;
+
+// The greeting service definition.
+service Greeter {
+  // Sends a greeting
+  rpc SayHello (HelloRequest) returns (HelloReply);
+}
+
+// The request message containing the employee's name, surname, patronym, gender, birthdate, having children flag and operation type.
+message HelloRequest {
+  string type = 1;  
+  int32 id = 2;  
+  string name = 3;
+  string surname = 4;
+  string patronym = 5;
+  bool gender = 6;
+  int32 year = 7;
+  int32 month = 8;
+  int32 day = 9;
+  bool hasChildren = 10;
+}
+
+// The response message containing the greetings.
+message HelloReply {
+  string message = 1;
+}
