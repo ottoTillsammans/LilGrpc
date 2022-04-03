@@ -89,12 +89,22 @@ namespace AdvanticaGrpcServer
 
             if (employee != null)
             {
+                DateTime date;
+
+                try
+                {
+                    date = new DateTime(request.Year, request.Month, request.Day);
+                }
+                catch
+                {
+                    date = new DateTime();
+                }
                 try
                 {
                     employee.Name = string.IsNullOrWhiteSpace(request.Name) ? employee.Name : request.Name;
                     employee.Surname = string.IsNullOrWhiteSpace(request.Surname) ? employee.Surname : request.Surname;
                     employee.Patronym = string.IsNullOrWhiteSpace(request.Patronym) ? employee.Patronym : request.Patronym;
-                    employee.Birthdate = new DateTime(request.Year, request.Month, request.Day);
+                    employee.Birthdate = date;
                     employee.Gender = request.Gender ? GenderType.Female : GenderType.Male;
                     employee.HasChildren = request.HasChildren;
 
