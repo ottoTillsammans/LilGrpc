@@ -57,9 +57,18 @@ namespace AdvanticaGrpcServer
         {
             string result = string.Empty;
 
+            DateTime date;
+
             try
             {
-                DateTime date = new DateTime(request.Year, request.Month, request.Day);
+                date = new DateTime(request.Year, request.Month, request.Day);
+            }
+            catch
+            {
+                date = new DateTime();
+            }
+            try
+            {
                 GenderType gender = request.Gender ? GenderType.Female : GenderType.Male;
                 Employee employee = new Employee(request.Name, request.Surname, request.Patronym, gender, date, request.HasChildren);
 
