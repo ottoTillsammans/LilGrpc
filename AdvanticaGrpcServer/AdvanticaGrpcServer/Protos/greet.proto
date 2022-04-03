@@ -10,7 +10,7 @@ service Greeter {
   rpc SayHello (HelloRequest) returns (HelloReply);
 }
 
-// The request message containing the employee's name, surname, patronym, gender, birthdate, having children flag and operation type.
+// The request message containing the employee's id, name, surname, patronym, gender, birthdate, having children flag and operation type.
 message HelloRequest {
   string type = 1;  
   int32 id = 2;  

@@ -2,11 +2,18 @@
 
 namespace AdvanticaGrpcServer
 {
+    /// <summary>
+    /// Enumeration to represent employee's gender.
+    /// </summary>
     public enum GenderType
     {
         Male,
         Female
     }
+    
+    /// <summary>
+    /// Class to represent employee entity.
+    /// </summary>
     public class Employee
     {
         public int Id { get; set; }

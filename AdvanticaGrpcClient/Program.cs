@@ -9,11 +9,15 @@ namespace AdvanticaGrpcClient
     {
         static async Task Main(string[] args)
         {
+            #region String resources.
+
             const string create = "create";
             const string read = "read";
             const string update = "update";
             const string delete = "delete";
             const string exit = "exit";
+
+            #endregion
 
             using var defaultChannel = GrpcChannel.ForAddress("https://localhost:5001");
             var client = new Greeter.GreeterClient(defaultChannel);
@@ -21,7 +25,7 @@ namespace AdvanticaGrpcClient
 
             while (true)
             {
-                Console.WriteLine("Input the command type: \"create\", \"read\", \"update\", \"delete\", \"exit\"");
+                Console.WriteLine("Type the command: \"create\", \"read\", \"update\", \"delete\", \"exit\"");
 
                 type = Console.ReadLine();
 
@@ -49,6 +53,13 @@ namespace AdvanticaGrpcClient
             }
         }
 
+        #region Methods to create request.
+
+        /// <summary>
+        /// Create request entity to create employee.
+        /// </summary>
+        /// <param name="type">Type of operation.</param>
+        /// <returns>Request entity.</returns>
         static HelloRequest Create(string type)
         {
             Console.WriteLine("Type Name:");
@@ -93,9 +104,16 @@ namespace AdvanticaGrpcClient
             return request;
         }
 
+        /// <summary>
+        /// Create request entity to update employee.
+        /// </summary>
+        /// <param name="type">Type of operation.</param>
+        /// <returns>Request entity.</returns>
         static HelloRequest Update(string type)
         {
-            Console.WriteLine("Type Id: [ Using nonexistant Id will create new entity ]");
+            Console.WriteLine("< Press Enter to skip the parameter >\n");
+
+            Console.WriteLine("Type Id: ");
             int id = 0;
             Int32.TryParse(Console.ReadLine(), out id);
 
@@ -142,11 +160,21 @@ namespace AdvanticaGrpcClient
             return request;
         }
 
+        /// <summary>
+        /// Create request entity to get employees list.
+        /// </summary>
+        /// <param name="type">Type of operation.</param>
+        /// <returns>Request entity.</returns>
         static HelloRequest Read(string type)
         {
             return new HelloRequest { Type = type };
         }
 
+        /// <summary>
+        /// Create request entity to delete employee.
+        /// </summary>
+        /// <param name="type">Type of operation.</param>
+        /// <returns>Request entity.</returns>
         static HelloRequest Delete(string type)
         {
             int id = 0;
@@ -157,4 +185,6 @@ namespace AdvanticaGrpcClient
             return new HelloRequest { Type = type, Id = id };
         }
     }
+
+    #endregion
 }

@@ -10,6 +10,8 @@ namespace AdvanticaGrpcServer
 {
     public class GreeterService : Greeter.GreeterBase
     {
+        #region String resources
+
         string server = @"(localdb)\mssqllocaldb";
         string dBName = "advantica";
         string creds = "Trusted_Connection = True";
@@ -19,12 +21,20 @@ namespace AdvanticaGrpcServer
         const string update = "update";
         const string delete = "delete";
 
+        #endregion
+
         private readonly ILogger<GreeterService> _logger;
         public GreeterService(ILogger<GreeterService> logger)
         {
             _logger = logger;
         }
 
+        /// <summary>
+        /// Get a request and send back a result message.
+        /// </summary>
+        /// <param name="request">Request entity.</param>
+        /// <param name="context">DB connection context.</param>
+        /// <returns>Task with result description.</returns>
         public override Task<HelloReply> SayHello(HelloRequest request, ServerCallContext context)
         {
             string result = string.Empty;
@@ -53,10 +63,17 @@ namespace AdvanticaGrpcServer
             });
         }
 
+        #region Methods to handle request.
+
+        /// <summary>
+        /// Create a new employee and write to DB.
+        /// </summary>
+        /// <param name="request">Request entity.</param>
+        /// <param name="db">DB connection context.</param>
+        /// <returns>Result description.</returns>
         public string CreateEmployee(HelloRequest request, Context db)
         {
             string result = string.Empty;
-
             DateTime date;
 
             try
@@ -82,6 +99,13 @@ namespace AdvanticaGrpcServer
             }
             return result;
         }
+        
+        /// <summary>
+        /// Update an existing employee and write changes to DB.
+        /// </summary>
+        /// <param name="request">Request entity.</param>
+        /// <param name="db">DB connection context.</param>
+        /// <returns>Result description.</returns>
         public string UpdateEmployee(HelloRequest request, Context db)
         {
             Employee employee = db.Employees.Where(e => e.Id == request.Id).FirstOrDefault();
@@ -123,6 +147,11 @@ namespace AdvanticaGrpcServer
             return result;
         }
 
+        /// <summary>
+        /// Get employees list from DB and send back.
+        /// </summary>
+        /// <param name="db">DB connection context.</param>
+        /// <returns>List of empoyees.</returns>
         public string ReadEmployees(Context db)
         {
             string result = string.Empty;
@@ -151,6 +180,12 @@ namespace AdvanticaGrpcServer
             return result;
         }
 
+        /// <summary>
+        /// Delete existing employee from DB.
+        /// </summary>
+        /// <param name="request">Request entity.</param>
+        /// <param name="db">DB connection context.</param>
+        /// <returns>Result description.</returns>
         public string DeleteEmployee(HelloRequest request, Context db)
         {
             string result = string.Empty;
@@ -177,5 +212,7 @@ namespace AdvanticaGrpcServer
             }
             return result;
         }
+
+        #endregion
     }
 }

@@ -2,6 +2,9 @@
 
 namespace AdvanticaGrpcServer
 {
+    /// <summary>
+    /// Class to implement DB connection.
+    /// </summary>
     public class Context : DbContext
     {
         private string server = string.Empty;
