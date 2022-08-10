@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-option csharp_namespace = "AdvanticaGrpcServer";
+option csharp_namespace = "LilGrpcServer";
 
 package greet;
 

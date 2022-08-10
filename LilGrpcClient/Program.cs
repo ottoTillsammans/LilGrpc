@@ -1,9 +1,9 @@
 ﻿using Grpc.Net.Client;
-using AdvanticaGrpcServer;
+using LilGrpcServer;
 using System;
 using System.Threading.Tasks;
 
-namespace AdvanticaGrpcClient
+namespace LilGrpcClient
 {
     class Program
     {

@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace AdvanticaGrpcServer
+namespace LilGrpcServer
 {
     /// <summary>
     /// Enumeration to represent employee's gender.

@@ -6,7 +6,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Text;
 
-namespace AdvanticaGrpcServer
+namespace LilGrpcServer
 {
     public class GreeterService : Greeter.GreeterBase
     {

@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace AdvanticaGrpcServer
+namespace LilGrpcServer
 {
     /// <summary>
     /// Class to implement DB connection.
@@ -19,6 +19,7 @@ namespace AdvanticaGrpcServer
             
             Database.EnsureCreated();
         }
+
         public Context(string server, string dBName, string credentials)
         {
             this.server = server;
@@ -28,6 +29,7 @@ namespace AdvanticaGrpcServer
 
             Database.EnsureCreated();
         }
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(connectionString);
